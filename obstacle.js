@@ -3,10 +3,14 @@ class Obstacle {
         this.ctx = ctx
         this.x = 0
         this.y = this._randomYob()
-        this.w = 60
-        this.h = 30
-        this.vx = 3.5
-      
+        this.w = 100
+        this.h = 45
+        this.vx0 = 4
+        if (Math.random() >= 0.5) {
+            this.vx0 *= -1
+            this.x = this.ctx.canvas.width - this.w
+        }
+        this.vx = this.vx0
 
     }
 
@@ -23,10 +27,10 @@ class Obstacle {
 
     _randomYob() {
         const possibilitiesYob = [
-            100,
-            150,
-            80,
-            115
+            175,
+            130,
+            85,
+            40,    
         ]
 
         const randomIndex = Math.floor(Math.random() * possibilitiesYob.length)

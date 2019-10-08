@@ -13,7 +13,7 @@ class Game {
         ];
         
         this.die = false;
-
+        this.frogOnObs = false
         this.tick = 0
         
     }
@@ -29,6 +29,7 @@ class Game {
             if (this.die) {
                 this._gameOver()
             }
+            
         }, 1000/60)
 
 
@@ -59,11 +60,9 @@ class Game {
     _draw() {
         
         this.bg.draw()
-        this.frog.draw()
         this.cars.forEach(c => c.draw())
         this.obstacles.forEach(ob => ob.draw())
-    
-
+        this.frog.draw()
         this.tick++
 
         if (this.tick > Math.random() * 300 + 100) {
@@ -88,22 +87,51 @@ class Game {
         this.obstacles.forEach(o => o.move())
     }
 
-    CollideFrog() {
+    collideFrog() {
         return this.cars.some(car => {
             return this.frog.x + this.frog.w > car.x && 
             this.frog.x < car.x + car.w &&
-             this.frog.y < car.y + car.h &&
-             this.frog.y + this.frog.h > car.y
+            this.frog.y < car.y + car.h &&
+            this.frog.y + this.frog.h > car.y
             
-        })
+        }) 
+    }
 
-        
+    collideObstacle() {
+         this.obstacles.some(obstacle => {
+            if( this.frog.x + this.frog.w > obstacle.x &&
+            this.frog.x < obstacle.x + obstacle.w &&
+            this.frog.y < obstacle.y + obstacle.h &&
+            this.frog.y + this.frog.h > obstacle.y
+        ){
+            this.updateSpeed(obstacle) 
+            this.frogOnObs = true
+        } else {
+            this.frogOnObs = false
+        }
+      })
+    }
+    updateSpeed(obs) {
+        this.frog.x += obs.vx
+    }
+    _frogOnWater() {
+        return (this.frog.y + this.frog.h) < 220
     }
 
     _checkCollisions() {
-        if (this.CollideFrog()) {
+        if (this.collideFrog()) {
             this.die = true
         }
-    }      
+
+        if (this.collideObstacle()) {
+            console.log(this.frogOnObs)
+            console.log('no toco el puto agua')
+        } 
+        
+        else if (this._frogOnWater() && !this.frogOnObs){
+            console.log('pierdes')
+            this.die = true
+        }
+    }
 
 }

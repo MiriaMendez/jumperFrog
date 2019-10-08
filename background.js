@@ -22,10 +22,14 @@ class Background {
         this.ctx.fillStyle = "GreenYellow";
         this.ctx.fillRect (0, 440, 570, 45);
         this.ctx.fillRect (0,215, 570, 45);
-        this.ctx.fillRect (0, 50, 570, 45);
+        this.ctx.closePath();
+        
 
         this.ctx.fillStyle = "DodgerBlue";
         this.ctx.fillRect (0,0, 570,220);
+        this.ctx.fillStyle = "GreenYellow";
+        this.ctx.fillRect (0, -5, 570, 45);
+
     
         this.ctx.beginPath();
         this.ctx.moveTo(0, 395);
