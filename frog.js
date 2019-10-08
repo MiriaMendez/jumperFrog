@@ -13,10 +13,10 @@ const downPressed = false;
 class Frog {
     constructor (ctx) {
         this.ctx = ctx
-        this.h = 40
-        this.w = 40
+        this.h = 30
+        this.w = 30
         this.x = this.ctx.canvas.width/2 - this.w
-        this.y = this.ctx.canvas.height - this.h
+        this.y = this.ctx.canvas.height - this.h -10
         this.vx = 5
         this.vy = 5
 
@@ -29,14 +29,6 @@ class Frog {
         this.ctx.fillStyle = "red";
         ctx.fillRect(this.x, this.y, this.w, this.h);
         this.ctx.closePath();
-    }
-
-    move() {
-        this.x 
-
-        if (this.x <= this.x + this.ctx.canvas.width) {
-        
-        }
     }
 
 
@@ -57,8 +49,8 @@ class Frog {
 
     
     _moveForward() {
-        if (this.y - this.h <= 0) {
-            this.vy = -5
+        if (this.y  >= 0) {
+            this.y -= 45
         } else {
             this.y -= this.h 
         }
@@ -66,8 +58,8 @@ class Frog {
     }    
 
     _moveBackward() {
-        if (this.y + this.h >= this.ctx.canvas.height) {
-            this.vy = 5
+        if (this.y - this.h - 30<= this.ctx.canvas.height) {
+            this.y += 45
         } else {
             this.y += this.h 
         }
@@ -75,21 +67,20 @@ class Frog {
     }
 
     _moveRight() {
-        if(this.x + this.w >= this.ctx.canvas.width){
+        if(this.x + this.w + 30 >= this.ctx.canvas.width){
             return
         } else {
-            this.x += this.w + 1,75
+            this.x += this.w + 40
         }
     }
 
     _moveLeft() {
-        if(this.x - this.w <= 0){
+        if(this.x <= 0){
             return
         } else {
             this.x -= this.w + 1,75
         }
     }
-
 }
 
 

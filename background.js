@@ -21,7 +21,8 @@ class Background {
 
         this.ctx.fillStyle = "GreenYellow";
         this.ctx.fillRect (0, 440, 570, 45);
-        this.ctx.fillRect (0,220, 570, 45);
+        this.ctx.fillRect (0,215, 570, 45);
+        this.ctx.fillRect (0, 50, 570, 45);
 
         this.ctx.fillStyle = "DodgerBlue";
         this.ctx.fillRect (0,0, 570,220);
