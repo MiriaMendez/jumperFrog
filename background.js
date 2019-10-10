@@ -9,7 +9,7 @@ class Background {
  
     
     draw() {
-        this.ctx.fillStyle = "black";
+        this.ctx.fillStyle = "#1C2833";
         this.ctx.fillRect(
         this.x, 
         this.y, 
@@ -19,15 +19,15 @@ class Background {
    
         this.ctx.closePath();
 
-        this.ctx.fillStyle = "GreenYellow";
+        this.ctx.fillStyle = "#4CAF50";
         this.ctx.fillRect (0, 440, 570, 45);
         this.ctx.fillRect (0,215, 570, 45);
         this.ctx.closePath();
         
 
-        this.ctx.fillStyle = "DodgerBlue";
+        this.ctx.fillStyle = "#29B6F6";
         this.ctx.fillRect (0,0, 570,220);
-        this.ctx.fillStyle = "GreenYellow";
+        this.ctx.fillStyle = "#4CAF50";
         this.ctx.fillRect (0, -5, 570, 45);
 
     

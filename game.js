@@ -9,12 +9,14 @@ class Game {
         ];
 
         this.obstacles = [
-            new Obstacle(ctx)
-        ];
-        
+
+        ]
+    
         this.die = false;
-        this.frogOnObs = false
-        this.tick = 0
+        this.tick = 0;
+        this.tick2 = 0;
+        this.frogOnObs = false;
+        this.setTimeout = null;
         
     }
 
@@ -65,10 +67,13 @@ class Game {
         this.frog.draw()
         this.tick++
 
-        if (this.tick > Math.random() * 300 + 100) {
-            this.tick = 0
+        if (this.tick % 25 === 0) {
+            this.tick2++
             this._addCar()
-            this._addObstacle()
+            if(this.tick2 % 5 === 0){
+                this._addObstacle()
+            }
+            
         }
     }
 
@@ -78,14 +83,23 @@ class Game {
     }
 
     _addObstacle() {
-        const obstacle = new Obstacle(this.ctx)
+        console.log('entra')
+        const obstacle4 = new Obstacle(this.ctx, 40, -4.5, this.ctx.canvas.width)
+        const obstacle3 = new Obstacle(this.ctx, 85, 2, 0) 
+        const obstacle2 = new Obstacle(this.ctx, 130, -4.5, this.ctx.canvas.width) 
+        const obstacle = new Obstacle(this.ctx, 175, 2, 0) 
         this.obstacles.push(obstacle)
+        this.obstacles.push(obstacle2)
+        this.obstacles.push(obstacle3)
+        this.obstacles.push(obstacle4)
+
     }
+
 
     _move() {
         this.cars.forEach(o => o.move())
         this.obstacles.forEach(o => o.move())
-    }
+        }
 
     collideFrog() {
         return this.cars.some(car => {
@@ -98,16 +112,14 @@ class Game {
     }
 
     collideObstacle() {
-         this.obstacles.some(obstacle => {
+         return this.obstacles.some(obstacle => {
             if( this.frog.x + this.frog.w > obstacle.x &&
             this.frog.x < obstacle.x + obstacle.w &&
             this.frog.y < obstacle.y + obstacle.h &&
             this.frog.y + this.frog.h > obstacle.y
         ){
-            this.updateSpeed(obstacle) 
-            this.frogOnObs = true
-        } else {
-            this.frogOnObs = false
+            this.updateSpeed(obstacle)
+            return true
         }
       })
     }
@@ -115,7 +127,7 @@ class Game {
         this.frog.x += obs.vx
     }
     _frogOnWater() {
-        return (this.frog.y + this.frog.h) < 220
+        return (this.frog.y + this.frog.h) < 220 && (this.frog.y + this.frog.h) > 45
     }
 
     _checkCollisions() {
@@ -127,7 +139,7 @@ class Game {
             console.log(this.frogOnObs)
             console.log('no toco el puto agua')
         } 
-        
+
         else if (this._frogOnWater() && !this.frogOnObs){
             console.log('pierdes')
             this.die = true
