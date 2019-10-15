@@ -1,4 +1,28 @@
+body {
+  background: linear-gradient(90deg, rgba(79,255,88,0.6320903361344538) 34%, rgba(132,247,169,1) 50%, rgba(0,212,255,1) 100%);
+}
+
 canvas {
     background: black;
     border: 4px solid green;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
+
+  .canvas-envelop {
+    width: 50%;
+    display: inline-block;
+    margin-left: 24px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .message-list{
+    width: 45%;
+    display: inline-block;
+  }
+

@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Crazy Crazy Frog</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <button>start</button>
-    <canvas id="my-canvas" width="570" height="540"></canvas>
+    <div>
+      <a class="title">Jumper Frog</a>
+    </div>
+
+    <div class="canvas-envelop">
+      <canvas id="my-canvas" width="570" height="540"></canvas>
+    </div>
+
+    <section class="message-list">
+      <section class="message -left">
+        <i class="nes-bcrikko"></i>
+        <!-- Balloon -->
+        <div class="nes-balloon from-left">
+          <p>Welcome to Jumper Frog</p>
+        </div>
+      </section>
+
+      <section class="message -right">
+        <!-- Balloon -->
+        <div class="nes-balloon from-right">
+          <p>Use the arroy keys to move the frog.</p>
+        </div>
+        <i class="nes-bcrikko"></i>
+      </section>
+    </section>
+
     <script src="frog.js"></script>
     <script src="car.js"></script>
     <script src="obstacle.js"></script>
@@ -16,4 +45,4 @@
     <script src="game.js"></script>
     <script src="script.js"></script>
   </body>
-</html> 
+</html>
